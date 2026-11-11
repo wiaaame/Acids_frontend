@@ -1,0 +1,124 @@
+/* ===== КОРПУС IPHONE ===== */
+.appShell {
+  position: relative;
+  width: calc(var(--frame-w) + 16px);
+  height: calc(var(--frame-h) + 16px);
+  background: var(--iphone-bezel);
+  border-radius: var(--iphone-radius);
+  padding: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Боковые кнопки корпуса */
+.appShell::before,
+.appShell::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  background: #2a2a2e;
+  border-radius: 3px;
+}
+.appShell::before { top: 130px; left: -3px; height: 55px; }
+.appShell::after  { top: 200px; right: -3px; height: 80px; }
+
+/* ===== ЭКРАН ТЕЛЕФОНА ===== */
+.appContent {
+  position: relative;
+  width: var(--frame-w);
+  height: var(--frame-h);
+  background: var(--color-bg);
+  border-radius: var(--screen-radius);
+  overflow: hidden;
+}
+
+/* ===== DYNAMIC ISLAND ===== */
+.dynamicIsland {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 30px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ===== ПАНЕЛЬ ВКЛАДОК ===== */
+/* .navbar в селекторе — чтобы гарантированно перебить
+   position: relative из Bootstrap независимо от порядка CSS */
+.appTabBar.navbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--tabbar-h);
+  padding: 0 0 14px;
+  margin: 0;
+  display: flex;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 30;
+  --bs-navbar-padding-y: 0;
+  --bs-navbar-padding-x: 0;
+}
+
+/* Полоска-индикатор «домашнего экрана» */
+.appTabBar::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: #1c1c1e;
+  border-radius: 3px;
+  opacity: 0.85;
+}
+
+.appTabBar .nav {
+  width: 100%;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.appTabBar .tabItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 0 0;
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.appTabBar .tabItem:hover {
+  color: var(--color-primary);
+}
+
+.appTabBar .tabItemActive {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.appTabBar .tabItem:disabled {
+  color: #ccc;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.appTabBar .tabIcon {
+  font-size: 20px;
+  line-height: 1;
+}

@@ -1,0 +1,36 @@
+/* ===== ПЕРЕМЕННЫЕ (общая палитра проекта) ===== */
+:root {
+  --color-primary: #1B4F72;
+  --color-accent: #2E86C1;
+  --color-bg: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-text: #1C2833;
+  --color-muted: #7B8A97;
+  --color-border: #E4E9ED;
+  --card-radius: 14px;
+  --shadow-soft: 0 2px 8px rgba(27, 79, 114, 0.08);
+
+  --frame-w: 375px;
+  --frame-h: 812px;
+  --tabbar-h: 64px;
+
+  --iphone-bezel: #0d0d0f;
+  --iphone-radius: 44px;
+  --screen-radius: 36px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, -apple-system, Arial, sans-serif;
+  background: radial-gradient(circle at 50% 0%, #e8eef5 0%, #cfd9e4 100%);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+}

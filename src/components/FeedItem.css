@@ -1,0 +1,166 @@
+/* Одна реакция занимает весь экран над панелью вкладок */
+.feedItem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.feedMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.feedMediaContent {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Градиентный оверлей: тёмный верх и низ, как в прототипе */
+.feedOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* справа отступ под панель действий (лайк, «→», чипы М.м./Конц.),
+     чтобы описание не заходило на чипы */
+  padding: 44px 92px 16px 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  color: #fff;
+}
+
+/* Заголовок кислоты — крупный белый */
+.feedAcid {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* Текст описания: клик по нему разворачивает/сворачивает */
+.feedDescription {
+  cursor: pointer;
+  user-select: none;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #EAF2F8;
+  margin: 0;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.feedDescriptionExpanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+/* Правая вертикальная панель: лайк, «Следующий», чипы */
+.feedActions {
+  position: absolute;
+  right: 8px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.feedActionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Лайк — только отображение, кликать нельзя */
+.feedLikeStatic {
+  cursor: default;
+  user-select: none;
+}
+
+.feedActionIcon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.feedActionCount {
+  font-size: 12px;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+/* Кнопка «Следующий» — круглая прозрачная, только иконка */
+.feedNextBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  transition: color 0.15s ease;
+}
+
+.feedNextBtn:hover {
+  color: #D6EAF8;
+}
+
+/* Чипы М.м. и Конц. — как .feed-field из прототипа */
+.feedStats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedStatChip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-width: 62px;
+}
+
+.feedStatLabel {
+  font-size: 9px;
+  color: #D6EAF8;
+}
+
+.feedStatValue {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}

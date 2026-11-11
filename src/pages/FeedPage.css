@@ -1,0 +1,22 @@
+/* Страница «Лента» занимает весь экран над панелью вкладок (TikTok-стиль) */
+.feedPage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: var(--tabbar-h);
+  overflow: hidden;
+  background: #000;
+}
+
+.pageLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+}
+
+.feedList {
+  height: 100%;
+}
