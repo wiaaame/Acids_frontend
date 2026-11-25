@@ -1,0 +1,83 @@
+/* ===== ПЕРЕМЕННЫЕ (общая палитра проекта) ===== */
+:root {
+  --color-primary: #1B4F72;
+  --color-accent: #2E86C1;
+  --color-bg: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-text: #1C2833;
+  --color-muted: #7B8A97;
+  --color-border: #E4E9ED;
+  --card-radius: 14px;
+  --shadow-soft: 0 2px 8px rgba(27, 79, 114, 0.08);
+
+  /* Размеры «корпуса телефона»: 375×812 — базовый макет iPhone X/11/12 */
+  --frame-w: 375px;
+  --frame-h: 812px;
+  --tabbar-h: 64px;
+
+  --iphone-bezel: #0d0d0f;
+  --iphone-radius: 44px;
+  --screen-radius: 36px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, -apple-system, Arial, sans-serif;
+  background: radial-gradient(circle at 50% 0%, #e8eef5 0%, #cfd9e4 100%);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  overflow: hidden;
+}
+
+/* ===== ТЕЛЕФОН / УСТАНОВЛЕННАЯ PWA =====
+   На реальном смартфоне (ширина ≤ 480px) и в standalone-режиме
+   убираем рамку iPhone: приложение занимает весь экран.
+   Это же правило обеспечивает корректный вид после «Добавить на
+   главный экран» — без обрезанного корпуса и лишних отступов. */
+@media (max-width: 480px), (max-height: 600px), (display-mode: standalone) {
+  :root {
+    --frame-w: 100vw;
+    --frame-h: 100vh; /* fallback для старых браузеров */
+    --frame-h: 100dvh; /* корректная высота с учётом адресной строки */
+  }
+
+  body {
+    display: block;
+    padding: 0;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/* ===== ШИРОКИЙ ЭКРАН (десктоп) =====
+   От 900px рамка телефона превращается в широкий макет:
+   3 колонки карточек. От 1200px — 4 колонки (см. TilesPage.css). */
+@media (min-width: 900px) {
+  :root {
+    --frame-w: min(1100px, calc(100vw - 48px));
+    --frame-h: min(860px, calc(100vh - 48px));
+  }
+
+  body {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,306 @@
+/* Общие стили страниц с формами: авторизация и добавление услуги */
+.formPage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: var(--tabbar-h);
+  overflow-y: auto;
+  padding: 44px 16px 20px;
+
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.formPage::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.formTitle {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.formSubtitle {
+  margin: 0 0 14px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.formGroup {
+  margin-bottom: 10px;
+}
+
+.formLabel {
+  margin-bottom: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.formControl {
+  padding: 7px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border-color: var(--color-border);
+}
+
+.formControl:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(46, 134, 193, 0.15);
+}
+
+/* Кнопка добавления — тот же цвет, что у кнопки «Войти» */
+.formSubmit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: var(--color-accent);
+}
+
+.formSubmit:hover,
+.formSubmit:focus {
+  background: var(--color-primary);
+}
+
+/* Карточка формы на странице добавления */
+.addFormCard {
+  padding: 12px;
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.formHint {
+  margin: 0 0 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+/* Медиа на странице добавления: фото и видео друг под другом */
+.mediaPreviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mediaPreview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: var(--shadow-soft);
+}
+
+.mediaPreviewContent {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Кнопка выбора файла поверх превью */
+.mediaPickBtn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease;
+}
+
+.mediaPickBtn:hover {
+  background: var(--color-primary);
+}
+
+.mediaPickInput {
+  display: none;
+}
+
+.formError {
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+/* ===== СТРАНИЦА АВТОРИЗАЦИИ ===== */
+.authPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.authHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.authLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  font-size: 26px;
+  box-shadow: var(--shadow-soft);
+}
+
+.authLogoIcon {
+  display: block;
+}
+
+.authTitle {
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formOptional {
+  margin-left: 4px;
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--color-muted);
+  text-transform: lowercase;
+}
+
+/* Кнопка «Войти» — тот же цвет и стиль, что у кнопки «Найти» на «Плитке» */
+.loginSubmit {
+  margin-top: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-accent);
+}
+
+.loginSubmit:hover,
+.loginSubmit:focus {
+  background: var(--color-primary);
+}
+
+/* ===== АДАПТИВНОСТЬ ФОРМ =====
+   На телефоне — одна колонка и компактные отступы,
+   на десктопе (≥ 900px) — широкая форма до 760px,
+   превью фото и видео стоят в ряд. */
+
+@media (max-width: 360px) {
+  .formPage {
+    padding: 40px 10px 16px;
+  }
+
+  .formTitle {
+    font-size: 17px;
+  }
+
+  .mediaPickBtn {
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 900px) {
+  .formPage {
+    padding: 64px max(24px, calc((100% - 760px) / 2)) 32px;
+  }
+
+  .formTitle {
+    font-size: 24px;
+  }
+
+  .formSubtitle {
+    font-size: 13px;
+  }
+
+  .formGroup {
+    margin-bottom: 14px;
+  }
+
+  .formLabel {
+    font-size: 13px;
+  }
+
+  .formControl {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .formSubmit {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .addFormCard {
+    padding: 18px;
+  }
+
+  /* Фото и видео на широком экране — в один ряд */
+  .mediaPreviewList {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .mediaPreview {
+    flex: 1 1 0;
+  }
+
+  .formError {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .authPage {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /* Форма входа уже, чем форма добавления */
+    padding-left: max(24px, calc((100% - 520px) / 2));
+    padding-right: max(24px, calc((100% - 520px) / 2));
+  }
+
+  .authHeader {
+    margin-bottom: 22px;
+  }
+
+  .authTitle {
+    font-size: 26px;
+  }
+
+  .loginSubmit {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

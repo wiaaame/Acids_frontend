@@ -1,0 +1,40 @@
+{
+  "name": "acid-front",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--experimental-global-webcrypto vite",
+    "build": "tsc && cross-env NODE_OPTIONS=--experimental-global-webcrypto vite build",
+    "build:pages": "tsc && cross-env NODE_OPTIONS=--experimental-global-webcrypto vite build --mode pages",
+    "preview": "cross-env NODE_OPTIONS=--experimental-global-webcrypto vite preview",
+    "deploy": "npm run build:pages && node scripts/spa-fallback.mjs && gh-pages -d dist --dotfiles",
+    "certs": "node scripts/generate-certs.mjs",
+    "icons": "node scripts/generate-icons.mjs",
+    "serve:https": "node server/proxy.mjs",
+    "generate-api": "node scripts/generate-api.mjs"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.15.0",
+    "axios": "^1.21.1",
+    "bootstrap": "^5.3.3",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.4",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "cross-env": "^10.1.0",
+    "gh-pages": "^6.3.0",
+    "sharp": "^0.33.5",
+    "swagger-typescript-api": "^13.14.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.6",
+    "vite-plugin-pwa": "^2.0.0"
+  }
+}

@@ -1,0 +1,178 @@
+/* Карточка плитки (как .tile-card из прототипа) */
+.reactionCard {
+  border: none;
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+
+  /* Карточки в одном ряду одинаковой высоты: все строки
+     (название, масса, концентрация, кнопки) выровнены друг под другом */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.reactionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(27, 79, 114, 0.16);
+}
+
+.cardImage {
+  width: 100%;
+  height: 95px;
+  object-fit: contain;
+  background: #dfe6ea;
+  flex: 0 0 auto;
+}
+
+/* Информация в плитке: название, масса, концентрация, лайки */
+.cardBody {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+}
+
+/* Название занимает фиксированную высоту в две строки,
+   чтобы масса и концентрация во всех плитках стояли ровно */
+.cardName {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.25;
+  min-height: 2.5em;
+  color: var(--color-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardMeta {
+  color: var(--color-muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* Подсказка «Подробнее» — клик по карточке открывает ленту с ?id= */
+.cardDetails {
+  margin-top: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* Кнопки лайка и удаления на карточке.
+   margin-top: auto прижимает их к низу — кнопки «Удалить»
+   во всех плитках находятся на одной линии */
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.cardLike {
+  align-self: flex-start;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cardLike:hover:not(:disabled) {
+  background: #E8F1F8;
+}
+
+.cardLikeActive {
+  background: #FDEBEC;
+  border-color: #F5B7B1;
+  color: #C0392B;
+}
+
+/* Кнопка удаления — широкая, цвет как у кнопки «Войти» */
+.cardDelete {
+  width: 100%;
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  padding: 7px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.cardDelete:hover:not(:disabled) {
+  background: var(--color-primary);
+}
+
+.cardLike:disabled,
+.cardDelete:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ===== АДАПТИВНОСТЬ КАРТОЧКИ =====
+   Конкретные размеры для трёх режимов:
+   - телефон (< 900px): фото 95px, название 12px, 2 колонки;
+   - десктоп (≥ 900px):  фото 130px, название 14px, 3 колонки;
+   - широкий (≥ 1200px): фото 150px, название 15px, 4 колонки. */
+
+@media (min-width: 900px) {
+  .cardImage {
+    height: 130px;
+  }
+
+  .cardBody {
+    padding: 12px 14px;
+    gap: 4px;
+  }
+
+  .cardName {
+    font-size: 14px;
+    min-height: 2.6em;
+  }
+
+  .cardMeta {
+    font-size: 12px;
+  }
+
+  .cardDetails {
+    font-size: 12px;
+  }
+
+  .cardLike,
+  .cardDelete {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cardImage {
+    height: 150px;
+  }
+
+  .cardBody {
+    padding: 14px 16px;
+  }
+
+  .cardName {
+    font-size: 15px;
+  }
+}

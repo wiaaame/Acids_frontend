@@ -1,0 +1,62 @@
+.dualRange {
+  position: relative;
+  height: 28px;
+  margin: 2px 2px 12px;
+}
+
+.dualRangeTrack {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.dualRangeFill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* Оба input прозрачные: видны только бегунки, трек рисуем сами */
+.dualRangeInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  pointer-events: none; /* клик проходит мимо, ловят только бегунки */
+}
+
+.dualRangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto; /* бегунок перехватывает события */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.dualRangeInput::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
